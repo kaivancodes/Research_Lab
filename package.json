@@ -1,0 +1,7 @@
+{
+  "name": "perceptual-hashing-20-day-system",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^9.0.0"
+  }
+}

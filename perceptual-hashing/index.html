@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Lab — Perceptual Hashing</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">
+      <button class="brand-mark" id="phPrivateBtn" title="Toggle sidebar" aria-label="Toggle sidebar">RL</button>
+      <div>
+        <strong>Research Lab</strong>
+        <span>20-Day System</span>
+      </div>
+    </div>
+    <button class="nav-btn active" data-page="home">⌂ <span>Project Overview</span></button>
+    <button class="nav-btn" data-page="papers">▣ <span>Research Papers</span></button>
+    <button class="nav-btn" data-page="days">◷ <span>Day-to-Day Work</span></button>
+    <button class="nav-btn locked-nav" id="implementationNav" data-page="implementation" disabled>⚙ <span>Implementation Plan</span><em id="implementationLock">LOCKED • Day 6</em></button>
+    <button class="nav-btn locked-nav" id="ieeeNav" data-page="ieee" disabled>✎ <span>IEEE Paper Guide</span><em id="ieeeLock">LOCKED • Day 17</em></button>
+    <div class="sidebar-footer">
+      <span id="connectionBadge" class="badge">LOCAL</span>
+      <small>Perceptual Hashing</small>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="menuBtn" class="icon-btn" aria-label="Open menu">☰</button><button id="sidebarToggle" class="sidebar-toggle" title="Collapse sidebar">‹</button>
+      <div>
+        <div class="eyebrow">DSA RESEARCH • IEEE PAPER</div>
+        <h1 id="pageTitle">Project Overview</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="progress-mini">
+          <span>20-Day Progress</span>
+          <strong id="overallProgressText">0%</strong>
+          <div class="progress-track"><div id="overallProgressBar" class="progress-bar"></div></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="homePage" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="pill">RESEARCH PROJECT</span>
+          <h2>Robustness Analysis of Perceptual Hashing for Near-Duplicate Image Detection Under Real-World Image Transformations</h2>
+          <p>20 days. One focused research question. Reproducible experiments. A complete IEEE-style paper.</p>
+          <div class="hero-actions">
+            <button class="primary" data-go="days">Start today's work →</button>
+            <button class="secondary" data-go="papers">Read research papers</button>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <span>Research target</span>
+          <strong>20</strong>
+          <small>days</small>
+        </div>
+      </div>
+
+      <div class="grid three">
+        <div class="card metric"><span>Paper reading</span><strong id="papersReadCount">0 / 25</strong><small>15 min minimum each</small></div>
+        <div class="card metric"><span>Daily submissions</span><strong id="daysDoneCount">0 / 20</strong><small>image or PDF accepted</small></div>
+        <div class="card metric"><span>IEEE readiness</span><strong id="ieeeStatus">Day 1</strong><small>template-first workflow</small></div>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <div class="card-title"><span>Research question</span><span class="tag">CORE</span></div>
+          <p>How robust are classical perceptual hashing algorithms when images undergo progressively stronger real-world transformations, and can transformation-aware similarity thresholds improve near-duplicate detection?</p>
+        </article>
+        <article class="card">
+          <div class="card-title"><span>Purpose</span><span class="tag">WHY</span></div>
+          <p>Measure the practical failure boundaries of AHash, DHash, PHash and WHash and determine when a single threshold is insufficient across different transformations.</p>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="card-title"><span>Why this topic was chosen</span><span class="tag">SELECTION</span></div>
+        <div class="selection-grid">
+          <div><b>Easy to understand</b><p>Hashing, binary strings and Hamming distance are straightforward DSA concepts.</p></div>
+          <div><b>Low implementation time</b><p>Python libraries provide reliable baselines; your effort goes into experiments and analysis.</p></div>
+          <div><b>Real-world value</b><p>Useful for duplicate removal, image retrieval, content management and large image repositories.</p></div>
+          <div><b>Research potential</b><p>The contribution is a controlled robustness/failure-boundary study rather than a generic hash comparison.</p></div>
+          <div><b>Eye-catching results</b><p>Images, transformations and graphs make the research easy to demonstrate.</p></div>
+          <div><b>Viva-friendly</b><p>You can explain the complete pipeline from image → hash → Hamming distance → threshold.</p></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-title"><span>Keywords & topics covered</span><span class="tag">IEEE</span></div>
+        <div class="chips">
+          <span>Perceptual Hashing</span><span>Image Deduplication</span><span>Near-Duplicate Detection</span>
+          <span>Hamming Distance</span><span>Hashing</span><span>Image Transformations</span>
+          <span>Threshold Selection</span><span>Robustness</span><span>DSA</span><span>Python</span>
+          <span>Experimental Analysis</span><span>IEEE Research</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-title"><span>Technical parameters</span><span class="tag">PROJECT SETUP</span></div>
+        <div class="selection-grid">
+          <div><b>Language</b><p>Python 3.x</p></div>
+          <div><b>Image libraries</b><p>Pillow + ImageHash</p></div>
+          <div><b>Data / analysis</b><p>NumPy + pandas</p></div>
+          <div><b>Visualization</b><p>Matplotlib</p></div>
+          <div><b>Evaluation</b><p>scikit-learn</p></div>
+          <div><b>Output files</b><p>CSV, PNG/JPG graphs, PDF paper</p></div>
+        </div>
+      </article>
+
+      <div class="grid two">
+        <article class="card">
+          <div class="card-title"><span>Proposed output</span></div>
+          <ol class="clean-list">
+            <li>Python implementation of AHash, DHash, PHash and WHash.</li>
+            <li>Controlled image-transformation generator.</li>
+            <li>Hamming-distance dataset and threshold sweep.</li>
+            <li>Precision, recall, F1 and error analysis.</li>
+            <li>Transformation-vs-distance and failure-boundary graphs.</li>
+            <li>Global vs transformation-aware threshold comparison.</li>
+            <li>Reproducible IEEE paper + code + experiment files.</li>
+          </ol>
+        </article>
+        <article class="card">
+          <div class="card-title"><span>Core experiment</span></div>
+          <div class="pipeline">
+            <div>Original<br><b>Image</b></div><i>→</i><div>Transformation<br><b>JPEG / Resize / Blur...</b></div><i>→</i><div>Hash<br><b>A/D/P/W</b></div><i>→</i><div>Distance<br><b>Hamming</b></div><i>→</i><div>Decision<br><b>Threshold</b></div>
+          </div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="card-title"><span>IEEE paper structure</span><span class="tag">START EARLY</span></div>
+        <div class="ieee-sections">
+          <span>Title</span><span>Abstract</span><span>Keywords</span><span>I. Introduction</span>
+          <span>II. Related Work</span><span>III. Background</span><span>IV. Methodology</span>
+          <span>V. Experimental Setup</span><span>VI. Results</span><span>VII. Discussion</span>
+          <span>VIII. Limitations & Future Work</span><span>IX. Conclusion</span><span>References</span>
+        </div>
+        <p class="note">Create the IEEE template on Day 1. Start transferring full writing on Day 17. Never leave IEEE formatting until the last day.</p>
+      </article>
+    </section>
+
+    <section id="papersPage" class="page">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">LITERATURE REVIEW</span>
+          <h2>25 Research Papers</h2>
+          <p>Every paper requires at least 15 minutes of active reading. Open a PDF and the timer starts automatically.</p>
+        </div>
+        <div class="paper-summary"><strong id="paperProgress">0 / 25</strong><span>papers completed</span></div>
+      </div>
+      <div id="papersList" class="paper-list"></div>
+    </section>
+
+    <section id="daysPage" class="page">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">EXECUTION</span>
+          <h2>20-Day Work Tracker</h2>
+          <p>At the end of each day, upload your screenshot, notes, result or PDF. It will be saved as <b>day_N_work</b>.</p>
+        </div>
+        <div class="paper-summary"><strong id="dayProgress">0 / 20</strong><span>days submitted</span></div>
+      </div>
+      <div id="daysList" class="days-list"></div>
+    </section>
+
+    <section id="implementationPage" class="page locked-page">
+      <div class="section-head">
+        <div><span class="eyebrow">LOCKED UNTIL DAY 6</span><h2>Python Implementation Plan</h2>
+        <p>Opens automatically when you reach Day 6. Before then, it stays unavailable.</p></div>
+      </div>
+      <div id="implementationContent" class="locked-placeholder">
+        <div class="lock-icon">🔒</div><h3>Implementation Plan Locked</h3><p>Finish the first five days. On Day 6 this section becomes available.</p>
+      </div>
+    </section>
+
+    <section id="ieeePage" class="page locked-page">
+      <div class="section-head">
+        <div><span class="eyebrow">LOCKED UNTIL DAY 17</span><h2>IEEE Paper Guide</h2>
+        <p>Opens when you reach the writing stage. This guide uses current IEEE Author Center guidance.</p></div>
+      </div>
+      <div id="ieeeContent" class="locked-placeholder">
+        <div class="lock-icon">🔒</div><h3>IEEE Guide Locked</h3><p>Finish the experimental phase. On Day 17 this section becomes available.</p>
+      </div>
+    </section>
+
+  </main>
+
+<script src="js/papers-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

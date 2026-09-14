@@ -1,0 +1,7 @@
+# macOS / editor
+.DS_Store
+*.pyc
+__pycache__/
+# Local runtime data
+backend/submissions/*
+!backend/submissions/.gitkeep
