@@ -34,10 +34,10 @@ async function loadStatus(){
     const r=await fetch(`${API_BASE}/status`);
     if(!r.ok) throw new Error("API unavailable");
     state.status=await r.json();
-    document.getElementById("connectionBadge").textContent="API CONNECTED";
+    {const b=document.getElementById("connectionBadge");if(b)b.textContent="API CONNECTED";}
   }catch(e){
     state.status=JSON.parse(localStorage.getItem("ph_status")||'{"days":{},"papers":{}}');
-    document.getElementById("connectionBadge").textContent="LOCAL STORAGE";
+    {const b=document.getElementById("connectionBadge");if(b)b.textContent="LOCAL STORAGE";}
   }
   renderAll();
 }
@@ -256,7 +256,6 @@ function toggleSidebar(){
 }
 // PH is the sidebar control. It does NOT open the hidden/private area.
 document.getElementById("phPrivateBtn")?.addEventListener("click",toggleSidebar);
-document.getElementById("sidebarToggle").addEventListener("click",toggleSidebar);
 function openHiddenStudyArea(){ if(!document.body.contains(document.getElementById("homePage"))) return; window.location.href="private.html"; }
 document.addEventListener("keydown",e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==="l"){e.preventDefault();openHiddenStudyArea();}});
 

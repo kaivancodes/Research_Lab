@@ -30,3 +30,13 @@
 .day.locked{opacity:.58;cursor:not-allowed}.day.locked .day-top{cursor:not-allowed}.day.locked:hover{border-color:var(--line);transform:none}.lock-tag{color:#aab8ca;border-color:#334862}.lock-mini{font-size:13px;opacity:.8}.locked-day-page{text-align:center;padding:48px 28px}.locked-day-page h1{margin:10px 0 8px}.locked-day-page p{color:var(--muted);max-width:620px;margin:0 auto 22px;line-height:1.6}.nav-button-link{display:inline-flex;text-decoration:none;align-items:center}.sequence-navigation{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}.sequence-nav{display:flex;align-items:center;min-height:52px;padding:0 18px;border:1px solid #29445f;background:#0d1d31;border-radius:14px;color:#cfe5f7;text-decoration:none;font-weight:900;font-size:12px;transition:.18s}.sequence-nav:hover{border-color:var(--accent);color:#fff;transform:translateY(-1px)}.sequence-nav.next{justify-content:flex-end}.sequence-nav.prev{justify-content:flex-start}.sequence-nav-placeholder{min-height:52px}.day-detail-page .sequence-navigation{margin-top:2px}.paper-detail-page .sequence-navigation{margin-top:0}@media(max-width:650px){.sequence-navigation{gap:9px}.sequence-nav{padding:0 12px;font-size:11px}}
 
 .home-link{color:#cfe5f7;text-decoration:none;border:1px solid #29445f;background:#0d1d31;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:800;margin-left:auto}.home-link:hover{border-color:var(--accent);color:#fff}
+
+/* v4.1 unified Research Lab sidebar */
+.sidebar-footer{margin-top:auto;border-top:1px solid var(--line);padding:14px 4px 2px;display:flex;align-items:center}
+.sidebar-home{display:flex;align-items:center;gap:10px;width:100%;padding:11px 13px;border:1px solid #31506f;background:#10233a;color:#cfe5f7;border-radius:11px;text-decoration:none;font-size:12px;font-weight:900;transition:.18s}
+.sidebar-home:hover{border-color:var(--accent);color:#fff;background:#142b46}
+.brand-mark{cursor:pointer}
+body.sidebar-collapsed .sidebar-footer{align-items:center}
+body.sidebar-collapsed .sidebar-home{justify-content:center;padding:11px 8px;font-size:18px}
+body.sidebar-collapsed .sidebar-home span{display:none}
+@media(max-width:900px){body.sidebar-collapsed .sidebar-footer{display:flex}}
