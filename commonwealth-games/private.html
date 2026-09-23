@@ -1,4 +1,58 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Research Lab — Hidden Workspace</title><link rel="stylesheet" href="css/style.css"></head><body class="standalone-page"><header class="standalone-topbar"><a class="back-link" href="index.html">← Research Lab</a><span class="eyebrow">COMMONWEALTH • HIDDEN RESEARCH WORKSPACE</span></header><main class="standalone-main"><section class="card private-landing"><span class="pill">HIDDEN RL WORKSPACE</span><h1>Research Workspace</h1><p>This private notebook stores supporting research material that is not part of the normal project navigation. Everything below is saved in this browser.</p><div class="private-special-grid"><button class="private-special-card" onclick="location.href='faculty.html'"><span>🎓</span><strong>Research Explanation</strong><small>Editable explanation of the problem, research question, gap, contribution and proposed system.</small><b>Open separate page →</b></button><button class="private-special-card" onclick="location.href='viva.html'"><span>❓</span><strong>Research Questions / Viva</strong><small>Editable questions and answers for research presentation, defense and viva preparation.</small><b>Open separate page →</b></button></div></section><section class="card workspace-notebook"><div class="card-title"><span>Research Notebook</span><span class="tag">LOCAL</span></div><p class="muted">Use this area while researching. These notes can later feed the Green, Yellow and Blue sections.</p><div id="workspaceFields" class="workspace-grid"></div></section></main><div id="toast" class="toast"></div><script>
-const KEY='cw_research_lab_state_v4';const fields=[['gap','Research Gap','Record the gap after comparing the literature.'],['notes','Research Notes','Important observations, terminology and ideas.'],['facts','Important Evidence','Verified facts, statistics, source notes and quotations.'],['decisions','Research Decisions','Decisions about scope, methods, weighting, datasets and evaluation.'],['sourcePlan','Source Decisions','Source selection, collection method, provenance and inclusion rules.'],['protocol','Dataset Decisions / Protocol','Schema, labels, inclusion/exclusion criteria and pilot protocol.'],['questions','Questions / Open Issues','Questions that still need evidence or clarification.'],['future','Future Work','Ideas that should be considered after the current research.']];
-let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){};state.workspace=state.workspace||{};const root=document.getElementById('workspaceFields');root.innerHTML=fields.map(([k,l,p])=>`<label><span>${l}</span><textarea data-k="${k}" placeholder="${p}">${String(state.workspace[k]||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}</textarea></label>`).join('');root.querySelectorAll('textarea').forEach(t=>t.oninput=()=>{state.workspace[t.dataset.k]=t.value;localStorage.setItem(KEY,JSON.stringify(state));showToast('Saved locally')});function showToast(x){const t=document.getElementById('toast');t.textContent=x;t.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>t.classList.remove('show'),1300)}
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Lab — Hidden Workspace</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="standalone-page private-workspace-page">
+<header class="standalone-topbar">
+  <a class="back-link" href="index.html">← Research Lab</a>
+  <span class="eyebrow">COMMONWEALTH • HIDDEN RESEARCH WORKSPACE</span>
+</header>
+<main class="standalone-main">
+  <section class="card private-landing">
+    <span class="pill">HIDDEN RL WORKSPACE</span>
+    <h1>Research Workspace</h1>
+    <p>This private workspace is not part of normal navigation. It opens only with <strong>Control + Shift + C</strong>. Use it for supporting research notes, evidence and decisions while you work.</p>
+    <div class="private-special-grid">
+      <a class="private-special-card" href="faculty.html"><span>🎓</span><strong>Research Explanation</strong><small>Editable explanation of the problem, research question, gap, contribution and proposed system.</small><b>Open separate page →</b></a>
+      <a class="private-special-card" href="viva.html"><span>❓</span><strong>Research Questions / Viva</strong><small>Editable questions and answers for research presentation, defense and viva preparation.</small><b>Open separate page →</b></a>
+    </div>
+  </section>
+  <section class="card workspace-notebook">
+    <div class="card-title"><span>Research Notebook</span><span class="tag">LOCAL</span></div>
+    <p class="muted">Everything here is saved in this browser. These notes can later feed the Green, Yellow and Blue sections.</p>
+    <div id="workspaceFields" class="workspace-grid"></div>
+    <div class="workspace-savebar"><span id="workspaceStatus">Ready</span><button id="saveWorkspace" class="primary">Save Research Notes</button></div>
+  </section>
+</main>
+<div id="toast" class="toast"></div>
+<script>
+const KEY='cw_research_lab_state_v4';
+const fields=[
+ ['gap','Research Gap','Record the gap after comparing the literature.'],
+ ['notes','Research Notes','Important observations, terminology and ideas.'],
+ ['facts','Important Evidence','Verified facts, statistics, source notes and quotations.'],
+ ['decisions','Research Decisions','Decisions about scope, methods, weighting, datasets and evaluation.'],
+ ['sourcePlan','Source Decisions','Source selection, collection method, provenance and inclusion rules.'],
+ ['protocol','Dataset Decisions / Protocol','Schema, labels, inclusion/exclusion criteria and pilot protocol.'],
+ ['questions','Questions / Open Issues','Questions that still need evidence or clarification.'],
+ ['future','Future Work','Ideas that should be considered after the current research.']
+];
+let state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){state={}}
+state.workspace=state.workspace||{};
+const root=document.getElementById('workspaceFields');
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+root.innerHTML=fields.map(([k,l,p])=>`<label><span>${esc(l)}</span><textarea data-k="${k}" placeholder="${esc(p)}">${esc(state.workspace[k]||'')}</textarea></label>`).join('');
+function saveWorkspace(){
+  root.querySelectorAll('textarea').forEach(t=>state.workspace[t.dataset.k]=t.value);
+  localStorage.setItem(KEY,JSON.stringify(state));
+  const el=document.getElementById('workspaceStatus');el.textContent='Saved just now';
+  const t=document.getElementById('toast');t.textContent='Research notes saved locally';t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),1500);
+}
+root.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>document.getElementById('workspaceStatus').textContent='Unsaved changes'));
+document.getElementById('saveWorkspace').addEventListener('click',saveWorkspace);
+</script>
+</body></html>
