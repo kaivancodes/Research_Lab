@@ -12,7 +12,3 @@ The Research Lab home page is the common entry point. Each project keeps its own
 - Commonwealth Games 2030: Control + Shift + C
 
 Hidden shortcuts are registered only inside their respective project areas, never on the Research Lab home page.
-
-
-## Unified sidebar update
-Both projects now use the same bottom-sidebar Research Lab Home control and sidebar collapse control. The header no longer contains the Local Workspace pill. Perceptual Hashing keeps its blue theme; Commonwealth Games keeps its purple theme.

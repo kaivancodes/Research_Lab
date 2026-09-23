@@ -15,16 +15,18 @@ const state = loadState();
 function save(){localStorage.setItem(STORAGE,JSON.stringify(state));showToast('Saved locally');}
 function showToast(x){toast.textContent=x;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1800)}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-const pages={overview:'Project Overview',roadmap:'Research Roadmap',papers:'Research Papers',workspace:'Research Workspace',green:'GREEN — Proposal',yellow:'YELLOW — Research',blue:'BLUE — Final'};
-function nav(page){document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===page));title.textContent=pages[page];if(page==='workspace'){location.href='private.html';return}render(page);window.scrollTo({top:0,behavior:'smooth'});closeMobileSidebar()}
+const pages={overview:'Project Overview',roadmap:'Research Roadmap',papers:'Research Papers',green:'GREEN — Proposal',yellow:'YELLOW — Research',blue:'BLUE — Final'};
+function nav(page){document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===page));title.textContent=pages[page];render(page);window.scrollTo({top:0,behavior:'smooth'});closeMobileSidebar()}
 document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>nav(x.dataset.page));
 function toggleSidebar(){document.body.classList.toggle('sidebar-collapsed');localStorage.setItem('cw_sidebar_collapsed',document.body.classList.contains('sidebar-collapsed'));}
 function closeMobileSidebar(){document.getElementById('sidebar').classList.remove('open')}
 document.getElementById('menu').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
-document.getElementById('sidebarToggle').onclick=toggleSidebar;
+document.getElementById('brandToggle').onclick=toggleSidebar; document.getElementById('sidebarToggle').onclick=toggleSidebar;
 if(localStorage.getItem('cw_sidebar_collapsed')==='true')document.body.classList.add('sidebar-collapsed');
 // Hidden area is intentionally registered only inside the Commonwealth project, never on RL home.
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='c'){e.preventDefault();location.href='private.html'}});
+
+document.getElementById('homeBtn').onclick=()=>location.href='../index.html';
 
 function renderOverview(){app.innerHTML=`
 <div class="card hero"><span class="pill">RESEARCH PROJECT 02</span><h2>Big Data-Based Text Summarization and Sentiment Analysis of Commonwealth Games Reviews</h2><p>Research Lab is a structured environment for planning, executing and documenting this research. The public interface contains the roadmap, literature and proposal/research/final sections; the detailed research workspace remains hidden and is opened only with <b>Ctrl + Shift + C</b>.</p><div class="hero-actions"><button class="primary" onclick="nav('roadmap')">Open Research Roadmap →</button><button class="secondary" onclick="nav('papers')">Open Research Papers →</button></div></div>

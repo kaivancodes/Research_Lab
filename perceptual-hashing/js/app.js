@@ -86,13 +86,10 @@ function savePrivateLocal(data){ localStorage.setItem("ph_private_notes", JSON.s
 function updateLocks(){
   const days = completedDays();
   const impl = document.getElementById("implementationNav");
-  const yellow = document.getElementById("yellowNav");
   const ieee = document.getElementById("ieeeNav");
   impl.disabled = days < IMPLEMENTATION_UNLOCK_DAY;
-  yellow.disabled = days < IEEE_UNLOCK_DAY;
   ieee.disabled = days < IEEE_UNLOCK_DAY;
   document.getElementById("implementationLock").textContent = days >= IMPLEMENTATION_UNLOCK_DAY ? "UNLOCKED" : "LOCKED • Day 6";
-  document.getElementById("yellowLock").textContent = days >= IEEE_UNLOCK_DAY ? "UNLOCKED" : "LOCKED • Day 17";
   document.getElementById("ieeeLock").textContent = days >= IEEE_UNLOCK_DAY ? "UNLOCKED" : "LOCKED • Day 17";
 }
 function normalizePaperNotes(id){
@@ -214,13 +211,12 @@ function updateSummary(){
 }
 function navigate(page){
   const days=completedDays();
-  if(page==="workspace"){window.location.href="private.html";return;}
-  if(page==="implementation" && days<IMPLEMENTATION_UNLOCK_DAY){showToast("Green stage unlocks on Day 6.");return;}
-  if((page==="yellow" || page==="ieee") && days<IEEE_UNLOCK_DAY){showToast("Yellow / Blue stages unlock on Day 17.");return;}
+  if(page==="implementation" && days<IMPLEMENTATION_UNLOCK_DAY){showToast("Implementation Plan unlocks on Day 6.");return;}
+  if(page==="ieee" && days<IEEE_UNLOCK_DAY){showToast("IEEE Paper Guide unlocks on Day 17.");return;}
   document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
   document.getElementById(page+"Page").classList.add("active");
   document.querySelectorAll(".nav-btn").forEach(x=>x.classList.toggle("active",x.dataset.page===page));
-  document.getElementById("pageTitle").textContent=page==="home"?"Project Overview":page==="papers"?"Research Papers":page==="days"?"Research Roadmap":page==="workspace"?"Research Workspace":page==="implementation"?"Green":page==="yellow"?"Yellow":"Blue";
+  document.getElementById("pageTitle").textContent=page==="home"?"Project Overview":page==="papers"?"Research Papers":page==="days"?"Day-to-Day Work":page==="implementation"?"Implementation Plan":"IEEE Paper Guide";
   document.getElementById("sidebar").classList.remove("open");
   if(page==="papers")renderPapers(); if(page==="days")renderDays();
   window.scrollTo({top:0,behavior:"smooth"});
@@ -259,6 +255,7 @@ function toggleSidebar(){
   if(toggle) toggle.textContent=collapsed?"›":"‹";
 }
 // PH is the sidebar control. It does NOT open the hidden/private area.
+document.getElementById("phPrivateBtn")?.addEventListener("click",toggleSidebar);
 document.getElementById("sidebarToggle").addEventListener("click",toggleSidebar);
 function openHiddenStudyArea(){ if(!document.body.contains(document.getElementById("homePage"))) return; window.location.href="private.html"; }
 document.addEventListener("keydown",e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==="l"){e.preventDefault();openHiddenStudyArea();}});
