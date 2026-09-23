@@ -11,7 +11,7 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="brand">
-      <button class="brand-mark" id="phPrivateBtn" title="Toggle sidebar" aria-label="Toggle sidebar">RL</button>
+      <div class="brand-mark" aria-hidden="true">RL</div>
       <div>
         <strong>Research Lab</strong>
         <span>20-Day System</span>
@@ -19,23 +19,25 @@
     </div>
     <button class="nav-btn active" data-page="home">⌂ <span>Project Overview</span></button>
     <button class="nav-btn" data-page="papers">▣ <span>Research Papers</span></button>
-    <button class="nav-btn" data-page="days">◷ <span>Day-to-Day Work</span></button>
-    <button class="nav-btn locked-nav" id="implementationNav" data-page="implementation" disabled>⚙ <span>Implementation Plan</span><em id="implementationLock">LOCKED • Day 6</em></button>
-    <button class="nav-btn locked-nav" id="ieeeNav" data-page="ieee" disabled>✎ <span>IEEE Paper Guide</span><em id="ieeeLock">LOCKED • Day 17</em></button>
+    <button class="nav-btn" data-page="days">◷ <span>Research Roadmap</span></button>
+    <button class="nav-btn" data-page="workspace">▧ <span>Research Workspace</span></button>
+    <button class="nav-btn locked-nav" id="implementationNav" data-page="implementation" disabled>Ⅰ <span>Green</span><em id="implementationLock">LOCKED • Day 6</em></button>
+    <button class="nav-btn locked-nav" id="yellowNav" data-page="yellow" disabled>Ⅱ <span>Yellow</span><em id="yellowLock">LOCKED • Day 17</em></button>
+    <button class="nav-btn locked-nav" id="ieeeNav" data-page="ieee" disabled>Ⅲ <span>Blue</span><em id="ieeeLock">LOCKED • Day 17</em></button>
     <div class="sidebar-footer">
-      <span id="connectionBadge" class="badge">LOCAL</span>
-      <small>Perceptual Hashing</small>
+      <a class="sidebar-home" href="../index.html">← Research Lab Home</a>
+      <button id="sidebarToggle" class="sidebar-toggle" title="Collapse sidebar" aria-label="Collapse sidebar">‹</button>
     </div>
   </aside>
 
   <main class="main">
     <header class="topbar">
-      <button id="menuBtn" class="icon-btn" aria-label="Open menu">☰</button><button id="sidebarToggle" class="sidebar-toggle" title="Collapse sidebar">‹</button>
+      <button id="menuBtn" class="icon-btn" aria-label="Open menu">☰</button>
       <div>
         <div class="eyebrow">DSA RESEARCH • IEEE PAPER</div>
         <h1 id="pageTitle">Project Overview</h1>
       </div>
-      <a class="home-link" href="../index.html">← Research Lab Home</a><div class="topbar-right">
+      <div class="topbar-right">
         <div class="progress-mini">
           <span>20-Day Progress</span>
           <strong id="overallProgressText">0%</strong>
@@ -162,8 +164,8 @@
       <div class="section-head">
         <div>
           <span class="eyebrow">EXECUTION</span>
-          <h2>20-Day Work Tracker</h2>
-          <p>At the end of each day, upload your screenshot, notes, result or PDF. It will be saved as <b>day_N_work</b>.</p>
+          <h2>Research Roadmap</h2>
+          <p>Follow the research execution sequence and record your daily evidence, notes, results or PDF submissions. Each stage remains saved in the browser.</p>
         </div>
         <div class="paper-summary"><strong id="dayProgress">0 / 20</strong><span>days submitted</span></div>
       </div>
@@ -178,6 +180,14 @@
       <div id="implementationContent" class="locked-placeholder">
         <div class="lock-icon">🔒</div><h3>Implementation Plan Locked</h3><p>Finish the first five days. On Day 6 this section becomes available.</p>
       </div>
+    </section>
+
+    <section id="yellowPage" class="page locked-page">
+      <div class="section-head">
+        <div><span class="eyebrow">YELLOW • RESEARCH</span><h2>Yellow — Research</h2>
+        <p>Research execution and evidence workspace for the completed experimental phase.</p></div>
+      </div>
+      <div class="card locked-placeholder"><div class="lock-icon">🔒</div><h3>Yellow Research Stage</h3><p>Use the Research Roadmap and Day-to-Day Work tracker to record experiments, evidence and results. This stage follows the same Research Lab navigation used by the Commonwealth Games project.</p><button class="secondary" data-go="days">Open Research Roadmap →</button></div>
     </section>
 
     <section id="ieeePage" class="page locked-page">
