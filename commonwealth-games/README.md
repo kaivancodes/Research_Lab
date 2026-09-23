@@ -33,3 +33,7 @@ The roadmap is not a day-by-day plan. It follows the Green → Yellow → Blue a
 15. Interpret.
 16. Complete YELLOW.
 17. Write BLUE last.
+
+
+### Commonwealth interaction
+The Commonwealth Games workspace now uses a collapsible RL sidebar, dedicated paper pages with reading tracking and multi-note storage, previous/next paper navigation, and a separate private workspace accessed with Control + Shift + C. The Research Lab home page does not register the private shortcut.

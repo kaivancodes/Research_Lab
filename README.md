@@ -1,19 +1,14 @@
 # Research Lab
 
-Research Lab is the central website for two independent research workspaces:
+A connected research workspace with two independent projects:
 
-1. **Perceptual Hashing** — `perceptual-hashing/`
-2. **Commonwealth Games 2030** — `commonwealth-games/`
+1. Perceptual Hashing
+2. Commonwealth Games 2030
 
-The root `index.html` is the only shared home page. Each project keeps its own interface, CSS, JavaScript, navigation and research workflow.
+The Research Lab home page is the common entry point. Each project keeps its own interface, navigation, storage and private workspace.
 
 ## Hidden workspaces
+- Perceptual Hashing: Control + Shift + L
+- Commonwealth Games 2030: Control + Shift + C
 
-- Perceptual Hashing: **Control + Shift + L**
-- Commonwealth Games 2030: **Control + Shift + C**
-
-The shortcuts are registered only inside their respective project applications. The Research Lab home page does **not** register either shortcut, so the hidden areas cannot be opened from the home page by those keyboard commands.
-
-## Netlify
-
-The root is the Netlify publish directory. The existing Perceptual Hashing API functions are retained under `netlify/functions/`.
+Hidden shortcuts are registered only inside their respective project areas, never on the Research Lab home page.
